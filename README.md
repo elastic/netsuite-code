@@ -1,0 +1,2 @@
+# netsuite-suitescripts
+NetSuite SuiteScripts
