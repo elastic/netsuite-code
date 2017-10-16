@@ -1,14 +1,19 @@
 /**
 *	RESTlet
-*	request : 
+*	Summary : A way to send a file to the NetSuite file cabinet by
+*					using the nlapiCreateFile api
 *
 *	required : netsuite_restlet_LIBRARY.js
 *
 **/
 
 var RestFile = {
+	/**
+	* creates a file in the netsuite file cabinet
+	* @input  name of file, type of file, content of file, folder for file, record to attach file to)
+	**/
 	create:function(datain){
-		nlapiLogExecution('DEBUG', 'request', JSON.stringify(datain));
+		// nlapiLogExecution('AUDIT', 'request', JSON.stringify(datain));
 
 		try{
 		//create file object
@@ -35,7 +40,6 @@ var RestFile = {
 			elasticHandleError(myReturnData, fromEmail, toEmail, body);
 
 			return myReturnData;
-
 		}
 	}
 }

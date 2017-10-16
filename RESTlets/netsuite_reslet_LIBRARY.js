@@ -78,7 +78,11 @@ function elasticHandleError(myReturnData, fromEmail, toEmail, body){
 					'Requestor: '+myReturnData.scriptInfo.requestor+'\n'+
 					'Environment: '+myReturnData.scriptInfo.requestor+'\n';
 
-		nlapiSendEmail(fromEmail, toEmail, subject, body);
+		try{
+			nlapiSendEmail(fromEmail, toEmail, subject, body);
+		}catch(e){
+			nlapiLogExecution('DEBUG', 'Error sending email','');
+		}
 	}
 
 	//send error to log application
