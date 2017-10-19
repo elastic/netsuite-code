@@ -15,28 +15,26 @@ var RestSO = {
 			//nlapiLogExecution('DEBUG', 'recordtype=' + datain.recordtype);
 			var record = nlapiCreateRecord(datain.recordtype);
 
+			//populate the sales order
 			for (var fieldname in datain) {
 				if (datain.hasOwnProperty(fieldname)) {
 					if (fieldname != 'recordtype' && fieldname != 'id') {
 						var value = datain[fieldname];
-						if (value) // ignore other type of parameters  
-						{
 							//nlapiLogExecution('DEBUG', 'typeof value =' + fieldname + '=' + typeof value);
-							if (typeof value == 'object') {
+							/**
+							* BUILD SUBLISTS
+							* sublists come in as objects that contain the line column values
+							**/
+							if (value && typeof value == 'object') {
 								if (value.length == undefined) {
-
 									record.selectNewLineItem(fieldname);
-
 									for (var sublistfield in value) {
-
 										var sublistvalue = value[sublistfield];
 										//nlapiLogExecution('DEBUG', fieldname + '=' + sublistfield + '=' + sublistvalue);
 										record.setCurrentLineItemValue(fieldname, sublistfield, sublistvalue);
 									}
 									record.commitLineItem(fieldname);
-
 								} else {
-
 									for (var i = 0; i < value.length; i++) {
 										record.selectNewLineItem(fieldname);
 										for (var sublistfield in value[i]) {
@@ -48,10 +46,14 @@ var RestSO = {
 									}
 								}
 							} else {
+							/**
+							* Populate fields
+							* sublists come in as objects that contain the line column values
+							**/
 								//nlapiLogExecution('DEBUG', fieldname + '=' + value);
 								record.setFieldValue(fieldname, value);
 							}
-						}
+						
 					}
 				}
 			}
@@ -59,12 +61,20 @@ var RestSO = {
 			var recordId = nlapiSubmitRecord(record);
 			//nlapiLogExecution('DEBUG', 'id=' + recordId);
 
+			//re-submit record to set off Tax calculations ?
 			var nlobj = nlapiLoadRecord(datain.recordtype, recordId);
 			nlapiSubmitRecord(nlobj, true);
-			return nlobj;
 
+			var myReturnData = new FinalData(true, null, datain, nlobj);
+
+			return myReturnData;
 		}catch(e){
-			
+			var myReturnData = new FinalData(false, e, datain, '');
+
+			var body = 'Error creating the Record';
+			elasticHandleError(myReturnData, RestSO.fromEmail, RestSO.toEmail, body);
+
+			return myReturnData;						
 		}
 
 	}
