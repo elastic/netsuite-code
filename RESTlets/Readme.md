@@ -33,13 +33,13 @@
 		<td></td>
 		<td>
 			<pre lang="javascript">
-			{
-				"error": 
-				{
-					"code" : "NETSUITE_ERROR_CODE",
-					"message": "Netsuite Generic Error Message"
-				}
-			}
+{
+	"error": 
+	{
+		"code" : "NETSUITE_ERROR_CODE",
+		"message": "Netsuite Generic Error Message"
+	}
+}
 			</pre>
 		</td>
 	</tr>
@@ -62,14 +62,14 @@
 		<td></td>
 		<td>
 			<pre lang="javascript">
-			{
-				"name": "AB00000076.pdf",
-				"fileType": "PDF",
-				"folder": "144",
-				"recordtype": "salesorder",
-				"id": "2041226",
-				"content": "FILE DATA"
-			}
+{
+	"name": "AB00000076.pdf",
+	"fileType": "PDF",
+	"folder": "144",
+	"recordtype": "salesorder",
+	"id": "2041226",
+	"content": "FILE DATA"
+}
 			</pre>
 		</td>
 		<td></td>
