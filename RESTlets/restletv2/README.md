@@ -79,6 +79,7 @@
 		<td>RESPONSE</td>
 		<td></td>
 		<td>
+			<p>The data returned is the internal id of the file created.</p>
 			<pre lang="javascript">
 {
     "success": true,
