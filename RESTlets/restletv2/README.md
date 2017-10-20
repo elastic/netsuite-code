@@ -1,8 +1,8 @@
 # NetSuite Restlet Integration Scripts
 
-<p>This is a list of NetSuite RESTlets leveraged by the Talend integration. V2 includes enhanced error logging so we can quickly determine the source of any issues. </p>
-<p>Connection requires an Access Token or Integration user.</p>
-<p>Webservices documentation for NetSuite can be found here: [SuiteTalk Platform Guide](https://netsuite.custhelp.com/app/answers/detail/a_id/11025)</p>
+This is a list of NetSuite RESTlets leveraged by the Talend integration. V2 includes enhanced error logging so we can quickly determine the source of any issues.
+Connection requires an Access Token or Integration user.
+Webservices documentation for NetSuite can be found here: [SuiteTalk Platform Guide](https://netsuite.custhelp.com/app/answers/detail/a_id/11025)
 
 ## RESTLET DELETE
 ### netsuite_reslet_record_delete.js
